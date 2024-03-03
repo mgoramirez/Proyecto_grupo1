@@ -28,9 +28,15 @@
                         <li class="nav-item active">
                             <a class="nav-link" th:href="@{/inicio/paginaInicio}">Inicio <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Perfil</a>
-                        </li>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Perfil
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Administrador</a></li>
+                                <li><a class="dropdown-item" href="#">Cliente</a></li>
+                            </ul>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Tickets</a>
                         </li>
