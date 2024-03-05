@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" >
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>CondoApp</title>
+    </head>
+    <body>
+
+        <-<!-- Formulario para agregar casa -->
+        <section th:fragment="Agregar" >
+
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
+                        <div class="text-center">
+                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px;" alt="logo">
+                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
+                                <h5 style="background-color: lightblue">Agregar</h5>
+                        </div>
+                        <form>
+                            <p>Ingresa los datos para registrarte</p>
+
+                            <div class="form-outline mb-4">
+                                <label for="NombreCasa">Nombre de la casa</label>
+                                <input type="text" id="NombreCasa" class="form-control border-bottom"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="Descripcion">Descripción</label>
+                                <input type="text" id="Descripcion" class="form-control border-bottom" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="imagen">Agregue una imagen de la casa:</label>
+                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                <img id="blah" src="#" alt="your image" height="200"/>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Finalizar</a></button>
+                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fragmento para el apartado de consultar y eliminar -->
+        <section th:fragment="Consultar">
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
+                        <div class="text-center">
+                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px;" alt="logo">
+                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
+                                <h5 style="background-color: lightblue">Consulta/Eliminar</h5>
+                        </div>
+                        <form>
+                            <form>
+                                <p>Area de consultas/Actualización</p>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">ID</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Descripcion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Sur-15</td>
+                                            <td>Dos plantas, jardin, A/C.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" >Consultar</a></button>
+                                <button class="btn btn-danger btn-block mb-2" type="button"><a class="text-white text-decoration-none" >Eliminar</a></button>
+                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Fragmento para el apartado de Actualizar -->
+        <section th:fragment="Actualizar" >
+
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
+                        <div class="text-center">
+                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px;" alt="logo">
+                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
+                                <h5 style="background-color: lightblue">Actualizar</h5>
+                        </div>
+                        <form>
+                            <p>Ingresa los datos para actualizar la casa</p>
+
+                            <div class="form-outline mb-4">
+                                <label for="NombreCasa">Nuevo nombre de la casa</label>
+                                <input type="text" id="NombreCasa" class="form-control border-bottom"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="Descripcion">Descripción</label>
+                                <input type="text" id="Descripcion" class="form-control border-bottom" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="imagen">Agregue una imagen de la casa:</label>
+                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                <img id="blah" src="#" alt="your image" height="200"/>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Finalizar</a></button>
+                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>
