@@ -1,0 +1,91 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>CondoApp</title>
+    </head>
+    <body>
+        <section th:fragment="RegistrarActividad">
+            <div class="container h-100">
+                <div class="row h-50 justify-content-center ">
+                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
+                    </div>
+                    <div class="text-center">
+                        <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                             style="width: 185px;" alt="logo">
+                            <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
+                            <h5 class="mt-1 mb-5 pb-1" >Actividades</h5>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Reservaciones</h4>
+                            </div>
+                            <div>
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-success">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID</th>
+                                            <th>Hora</th>
+                                            <th>Descripcion</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="text-center p-2">
+                                <span>No hay actividades registradas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/agendar}">Agendar</a></button>
+                        <button class="btn btn-primary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/inicio/paginaInicio}">Inicio</a></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Agregar una actividad nueva -->
+        <section th:fragment="Agregar" >
+
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
+                        <div class="text-center">
+                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px;" alt="logo">
+                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
+                                <h5 style="background-color: lightblue">Agendar Actividad</h5>
+                        </div>
+                        <form>
+                            <p>Ingresa los datos para registrarte la nueva actividad.</p>
+
+                            <div class="form-outline mb-4">
+                                <label for="NombreCasa">Nombre de la casa</label>
+                                <input type="text" id="NombreCasa" class="form-control border-bottom"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="Descripcion">Descripción descripcion de la actividad</label>
+                                <input type="text" id="Descripcion" class="form-control border-bottom" />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="Descripcion">Horario de la actividad</label>
+                                <input type="text" id="Descripcion" class="form-control border-bottom" />
+                            </div>
+       
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/actividad}">Agregar</a></button>
+                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/actividad}">Cancelar</a></button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

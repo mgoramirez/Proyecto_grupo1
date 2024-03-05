@@ -14,7 +14,8 @@
                     <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
 
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary" th:href="@{/inicio/paginaInicio}">Inicio</button>
+                            
+                            <button type="button" class="btn btn-primary"> <a class="text-white text-decoration-none" th:href="@{/inicio/paginaInicio}">Inicio</a></button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Casas
                             </button>
@@ -52,7 +53,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Actualizar Casa</h5>
                                     <p class="card-text">Podras actualizar los datos de la casa una vez ingresada.</p>
-                                    <a th:href = "@{/casas/actualizar}" class="btn btn-primary">Agregar</a>
+                                    <a th:href = "@{/casas/actualizar}" class="btn btn-primary">Actualizar</a>
                                 </div>
                         </div>
                     </div>
