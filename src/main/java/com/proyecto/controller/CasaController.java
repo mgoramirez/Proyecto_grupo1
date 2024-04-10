@@ -4,6 +4,7 @@ package com.proyecto.controller;
 import com.proyecto.domain.Casas;
 import com.proyecto.service.CasasService;
 import com.proyecto.service.impl.FirebaseStorageServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/casas")
 public class CasaController {
@@ -54,17 +55,48 @@ public class CasaController {
         return "/casas/consulta";
     }
 
-    @PostMapping("/consulta/casa")/*Falta enlazar bien*/
+    @PostMapping("/consulta/casa")
     public String consulta(Casas casa,Model model) {
         casa=casasService.getCasa(casa);
         model.addAttribute("casa", casa);
         return "/casas/consulta";
     }
    
+    /*******************************************************/
+    /*****   Modificar casa
+     * @param model ***/
+    
     @RequestMapping("/actualizar")
     public String actualizar(Model model) {
-        model.addAttribute("attribute", "value");
+        //model.addAttribute("casa", new Casas());
         return "/casas/actualizar";
     }
     
+    @PostMapping("/modificar")
+    public String modificar(Casas casa, Model model) {
+        casa = casasService.getCasa(casa);
+        log.info(casa.getNombreCasa());
+        model.addAttribute("casa", casa);
+        return "/casas/actualizar";
+    }
+    
+    @PostMapping("/modificar/casa")
+    public String Modificar(Casas casa,
+        @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            casasService.save(casa);
+            casa.setRutaImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile, 
+                            "casas", 
+                            casa.getIdCasa()));
+        }
+        casasService.save(casa);
+        return "redirect:/casas/actualizar";
+    }
+    
+  
+    
+
+
 }
