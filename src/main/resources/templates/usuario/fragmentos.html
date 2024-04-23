@@ -64,16 +64,6 @@
                                     <label for="email">[[#{usuario.correo}]]</label>
                                     <input type="email" class="form-control" name="correo" required="true"/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="telefono">[[#{usuario.telefono}]]</label>
-                                    <input type="tel" class="form-control" name="telefono"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">[[#{usuario.imagen}]]</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);"/>
-                                    <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
@@ -101,7 +91,6 @@
                                             <th>[[#{usuario.username}]]</th>
                                             <th>[[#{usuario.nombre}]]</th>
                                             <th>[[#{usuario.apellidos}]]</th>
-                                            <th>[[#{usuario.imagen}]]</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -180,17 +169,6 @@
                                                            name="correo" th:field="*{correo}"
                                                            required="true">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="telefono">[[#{usuario.telefono}]]</label>
-                                                    <input type="tel" class="form-control" 
-                                                           name="telefono" th:field="*{telefono}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="imagen">[[#{usuario.imagen}]]</label>
-                                                    <input class="form-control" type="file" name="imagenFile"
-                                                           onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -227,4 +205,9 @@
 
     </body>
 </html>
+
+
+
+
+
 
