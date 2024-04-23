@@ -1,0 +1,10 @@
+.nav-link:hover{
+    color: orange;
+    background-color: #0066ff;
+    transition: 1s;
+}
+#a{
+    font-style: italic;
+    font-size: 50px;
+}
+

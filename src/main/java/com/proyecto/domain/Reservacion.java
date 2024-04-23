@@ -1,38 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="reservacion")
-public class Reservacion implements Serializable{
+public class Reservacion implements Serializable {
     
-    private static final long serialVersionUID =1L;  
+    private static final long serialVersionUID = 1L;  
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
-    private Long idReserva; // Hibernate transforma en id_categoria
+    private Long idReserva;
+    
+    @Column(name = "id_casa")
     private String idCasa;
+    
     private String descripcion;
-    private String rutaImagen;
+    
+    private Date fecha;
+    
     private boolean activo;
 
     public Reservacion() {
     }
 
-    public Reservacion(String idCasa, String descripcion, String rutaImagen, boolean activo) {
+    public Reservacion(String idCasa, String descripcion, Date fecha, boolean activo) {
         this.idCasa = idCasa;
         this.descripcion = descripcion;
-        this.rutaImagen = rutaImagen;
+        this.fecha = fecha;
         this.activo = activo;
     }
-    
-    
 }
