@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -9,96 +8,97 @@
         <section th:fragment="RegistrarActividad" style="height: 100%; background-color: #333333;">
             <div class="container" style="margin-bottom: 20px;">
                 <br>
-                <div class="row  justify-content-center " style=" border-radius: 10px;  height: 500px; width: 100% ; background: url(https://davidjimenez.eu/wp-content/uploads/2013/02/diseno-de-jardin-con-fuente.jpg)">
-                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown" style="margin-top: 100px;">
-                    </div>
-                    <div class="text-center">
-                        <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                             style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
-                            
-                            <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
-                            <br>
-                            <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Actividades</h5>
-                            <h4 style="text-align: center; color: white;" class="h4" >Reserva espacios para disfutar de tus eventos con amigos y familiares.</h4>
-                    </div>
-
-                    <div class="col-md-9">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h4>Reservaciones</h4>
-                            </div>
-                            <div th:if="${reservaciones != null and !reservaciones.empty}">
-                                <table class="table table-striped table-hover">
-                                    <thead class="table-success">
-                                        <tr>
-                                            <th>Num de Reserva</th>
-                                            <th>Num. de Casa</th>
-                                            <th>Descripcion</th>
-                                            <th>Fecha</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="reservacion : ${categorias}">
-                                            <td>[[${reservacion.idReserva}]]</td>
-                                            <td>[[${reservacion.idCasa}]]</td>
-                                            <td>[[${reservacion.descripcion}]]</td>
-                                            <td>[[${reservacion.fecha}]]</td>                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center p-2" th:if="${reservaciones == null or reservaciones.empty}">
-                                <span>No hay actividades registradas</span>
-                            </div>
+                    <div class="row  justify-content-center " style=" border-radius: 10px;  height: 500px; width: 100% ; background: url(https://davidjimenez.eu/wp-content/uploads/2013/02/diseno-de-jardin-con-fuente.jpg)">
+                        <div class="btn-group " role="group" aria-label="Button group with nested dropdown" style="margin-top: 100px;">
                         </div>
-                    </div>
+                        <div class="text-center">
+                            <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                  style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
 
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-success btn-block mb-4" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/agendarCasa}">Agendar</a></button>
-                        <button class="btn btn-primary btn-block mb-4" type="button"><a class="text-white text-decoration-none" th:href="@{/inicio/paginaInicio}">Inicio</a></button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Agregar una actividad nueva -->
-        <section th:fragment="Agregar" style="height: 100%; background-color: #333333;">
-            <div class="container" style="margin-bottom: 20px;">
-                <div class="row justify-content-center align-items-center" >
-                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5" style="margin-top: 100px;">
-                        <div class="text-center" style="color: white">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
                                 <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
-                                <h5 style="background-color: lightblue; color: white; font-size: 35px; margin-top: 100px" >Agendar Actividad</h5>
-                        </div>
-                        <form style="color: white">
-                            <p>Ingresa los datos para registrarte la nueva actividad.</p>
+                                <br>
+                                    <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Actividades</h5>
+                                    <h4 style="text-align: center; color: white;" class="h4" >Reserva espacios para disfutar de tus eventos con amigos y familiares.</h4>
+                                    </div>
 
-                            <div class="form-outline mb-4">
-                                <label for="NombreCasa">Nombre de la casa</label>
-                                <input type="text" id="NombreCasa" class="form-control border-bottom"/>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label for="Descripcion">Descripción de la actividad</label>
-                                <input type="text" id="Descripcion" class="form-control border-bottom" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label for="Descripcion">Horario de la actividad</label>
-                                <input type="text" id="fecha" class="form-control border-bottom" />
-                            </div>
+                                    <div class="col-md-9">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <h4>Reservaciones</h4>
+                                            </div>
+                                            <div th:if="${reservaciones != null and !reservaciones.empty}">
+                                                <table class="table table-striped table-hover">
+                                                    <thead class="table-success">
+                                                        <tr>
+                                                            <th>Num de Reserva</th>
+                                                            <th>Num. de Casa</th>
+                                                            <th>Descripcion</th>
+                                                            <th>Fecha</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="reservacion : ${categorias}">
+                                                            <td>[[${reservacion.idReserva}]]</td>
+                                                            <td>[[${reservacion.idCasa}]]</td>
+                                                            <td>[[${reservacion.descripcion}]]</td>
+                                                            <td>[[${reservacion.fecha}]]</td>                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center p-2" th:if="${reservaciones == null or reservaciones.empty}">
+                                                <span>No hay actividades registradas</span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-success btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/actividad}">Agregar</a></button>
-                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/actividad}">Cancelar</a></button>
-                            </div>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-success btn-block mb-4" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/agendarCasa}">Agendar</a></button>
+                                        <button class="btn btn-primary btn-block mb-4" type="button"><a class="text-white text-decoration-none" th:href="@{/inicio/paginaInicio}">Inicio</a></button>
+                                    </div>
+                                    </div>
 
-                        </form>
+                                    </div>
+                                    </section>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+                                    <!-- Agregar una actividad nueva -->
+                                    <section th:fragment="Agregar" style="height: 100%; background-color: #333333;">
+                                        <div class="container" style="margin-bottom: 20px;">
+                                            <div class="row justify-content-center align-items-center" >
+                                                <div class="col-10 col-md-8 col-lg-6 mx-5 px-5" style="margin-top: 100px;">
+                                                    <div class="text-center" style="color: white">
+                                                        <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                                             style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
+                                                            <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
+                                                            <h5 style="background-color: lightblue; color: white; font-size: 35px; margin-top: 100px" >Agendar Actividad</h5>
+                                                    </div>
+                                                    <form style="color: white; margin-bottom: 300px;" th:action="@{/reservacion/guardar}" th:object="${reservacion}"
+                                                          method="POST" class="was-validated" enctype="multipart/form-data">
+                                                        <p>Ingresa los datos para registrarte la nueva actividad.</p>
 
-    </body>
-</html>
+                                                        <div class="form-outline mb-4">
+                                                            <label for="NombreCasa">Nombre de la casa</label>
+                                                            <input type="text" id="NombreCasa" class="form-control border-bottom"/>
+                                                        </div>
+                                                        <div class="form-outline mb-4">
+                                                            <label for="Descripcion">Descripción de la actividad</label>
+                                                            <input type="text" id="Descripcion" class="form-control border-bottom" />
+                                                        </div>
+                                                        <div class="form-outline mb-4">
+                                                            <label for="Descripcion">Horario de la actividad</label>
+                                                            <input type="text" id="fecha" class="form-control border-bottom" />
+                                                        </div>
+
+                                                        <div class="d-grid gap-2 col-6 mx-auto">
+                                                            <button class="btn btn-success btn-block mb-2" type="submit"><a class="text-white text-decoration-none" th:href="@{/reservacion/listado}">Agregar</a></button>
+                                                            <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/reservacion/actividad}">Cancelar</a></button>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    </body>
+                                    </html>

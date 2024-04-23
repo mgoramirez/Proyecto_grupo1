@@ -1,40 +1,16 @@
 package com.proyecto.service;
 
-import com.proyecto.dao.ReservacionDao;
 import com.proyecto.domain.Reservacion;
 import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class ReservacionService {
+public interface ReservacionService {
 
-    private final ReservacionDao reservacionDao;
+    public List<Reservacion> buscarPorId();
 
-    @Autowired
-    public ReservacionService(ReservacionDao reservacionDao) {
-        this.reservacionDao = reservacionDao;
-    }
+    public Reservacion getReservacion(Reservacion reservacion);
 
-    // Método para obtener todas las reservaciones
-    public List<Reservacion> obtenerTodasLasReservaciones() {
-        return reservacionDao.findAll();
-    }
+    public void save(Reservacion reservacion);
 
-    // Método para obtener una reservación por su ID
-    public Optional<Reservacion> obtenerReservacionPorId(Long id) {
-        return reservacionDao.findById(id);
-    }
-
-    // Método para guardar una reservación
-    public Reservacion guardarReservacion(Reservacion reservacion) {
-        return reservacionDao.save(reservacion);
-    }
-
-    // Método para eliminar una reservación por su ID
-    public void eliminarReservacionPorId(Long id) {
-        reservacionDao.deleteById(id);
-    }
+    public void delete(Reservacion reservacion);
 
 }

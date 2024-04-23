@@ -8,31 +8,27 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="reservacion")
-public class Reservacion implements Serializable {
+public class Reservacion implements Serializable{
     
-    private static final long serialVersionUID = 1L;  
+    private static final long serialVersionUID =1L;  
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
-    private Long idReserva;
-    
-    @Column(name = "id_casa")
+    private Long idReserva; // Hibernate transforma en id_categoria
     private String idCasa;
-    
     private String descripcion;
-    
-    private Date fecha;
-    
-    private boolean activo;
+    private Date fecha; 
+   
 
     public Reservacion() {
     }
 
-    public Reservacion(String idCasa, String descripcion, Date fecha, boolean activo) {
+    public Reservacion(String idCasa, String descripcion,Date fecha) {
         this.idCasa = idCasa;
         this.descripcion = descripcion;
-        this.fecha = fecha;
-        this.activo = activo;
+        this.fecha = fecha;        
     }
+    
+    
 }

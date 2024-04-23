@@ -54,7 +54,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
                         "/usuario/**", "/js/**", "/webjars/**", "/error/**", "/inicio/**",
-                         "/inicio/paginaInicio", "/registro/**", "/usuario/listado")
+                        "/inicio/paginaInicio", "/registro/**", "/usuario/listado",
+                        "/reservacion/actividad") // Agregamos la nueva ruta aquí
                 .permitAll()
                 .requestMatchers(
                         "/casas/**", "/tickets/**",
@@ -65,9 +66,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/tickets/consultar",
                         "/tickets/eliminar",
                         "/usuario/**",
-                        "reservacion/crear",
-                        "reservacion/consultar",
-                        "reservacion/eliminar",
+                        "/reservacion/**",
                         "/inicio/**"
                 ).hasAnyRole("USER")
                 )
@@ -76,5 +75,4 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }
-
 }
