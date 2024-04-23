@@ -8,58 +8,47 @@
 
     </head>
     <body>
-        <section th:fragment="RegistroAdmin">
+        <section th:fragment="RegistroAdmin" style="height: 100%; background-color: #333333;">
             <div class="container h-100">
-                <div class="row h-100 justify-content-center align-items-center">
-                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
+                <br>
+                    <div class="row h-100 justify-content-center align-items-center" >
+                        <div class="col-10 col-md-8 col-lg-6 mx-5 px-5" style="margin-bottom: 50px">
+                            <div class="text-center">
+                                <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                      style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
 
-                        <div class="btn-group" role="group">
-                            
-                            <button type="button" class="btn btn-primary"> <a class="text-white text-decoration-none" th:href="@{/index}">Inicio</a></button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Casas
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/casas/crudCasas}">Agregar </a></li>
-                                <li><a class="dropdown-item" th:href = "@{/casas/consulta}">Consultar/Eliminar</a></li>
-                                <li><a class="dropdown-item" th:href = "@{/casas/actualizar}">Actualizar</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
-                        <div class="text-center">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
-                                <h5 class="mt-1 mb-5 pb-1" >Perfil de administrador</h5>
-                        </div>
-                        <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Agregar Casa</h5>
-                                    <p class="card-text">Para agregar una casa ingrese a la siguiente opcion donde podrá digitar 
-                                    las respectivas descripciones para el ingreso de una nueva casa.</p>
-                                    <a th:href="@{/casas/crudCasas}" class="btn btn-primary">Agregar</a>
-                                </div>
-                        </div>
-                        <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Consultar/Eliminar Casa</h5>
-                                    <p class="card-text">Mediante el ID de la casa podra consultar o bien eliminar dichos datos.</p>
-                                    <a th:href = "@{/casas/consulta}" class="btn btn-primary">Consultar/Eliminar</a>
-                                </div>
-                        </div>
-                        <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Actualizar Casa</h5>
-                                    <p class="card-text">Podras actualizar los datos de la casa una vez ingresada.</p>
-                                    <a th:href = "@{/casas/actualizar}" class="btn btn-primary">Actualizar</a>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-        </section>
-    </body>
-</html>
-//prueba
+                                    <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
+                                    <br>
+                                        <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Area de Adminsitrador</h5>
+                                        <h4 style="text-align: center; color: white;" class="h4" >Aqui podras agregar, eliminar o modificar la casa que desees</h4>
+                                        </div>
+                                        <div style="margin-bottom: 300px;">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Agregar Casa</h5>
+                                                    <p class="card-text">Para agregar una casa ingrese a la siguiente opcion donde podrá digitar 
+                                                        las respectivas descripciones para el ingreso de una nueva casa.</p>
+                                                    <a th:href="@{/casas/crudCasas}" class="btn btn-primary">Agregar</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Consultar/Eliminar Casa</h5>
+                                                    <p class="card-text">Mediante el ID de la casa podra consultar o bien eliminar dichos datos.</p>
+                                                    <a th:href = "@{/casas/consulta}" class="btn btn-primary">Consultar/Eliminar</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Actualizar Casa</h5>
+                                                    <p class="card-text">Podras actualizar los datos de la casa una vez ingresada.</p>
+                                                    <a th:href = "@{/casas/actualizar}" class="btn btn-primary">Actualizar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>    
+                                        </section>
+                                        </body>
+                                        </html>
