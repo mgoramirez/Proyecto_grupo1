@@ -74,7 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">ID</label>
                                 <input type="search" class="form-control" name=idCasa id="idCasa" aria-describedby="emailHelp" required="true"/>
-                                <input type="submit" value="Consultar"/>
+                                <input type="submit" class="btn btn-success btn-block mb-2" value="Consultar"/>
                             </div>
                         </form>  
                         <table th:if="${casa != null}" class="table" id="details" >
@@ -92,10 +92,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <td>[[${casa.nombreCasa}]]</td>
                                     <td>[[${casa.descripcion}]]</td>
                                     <td th:text="${casa.activo} ? 'Activa' : 'Inactiva'" />
+                                    <td> <button class="btn btn-danger btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/casas/eliminar/}+${casa.idCasa}">Eliminar</a></button> </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="d-grid gap-2 col-6 mx-auto">
 
+                            <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Volver</a></button>
+                        </div>        
                     </div>
                 </div>
             </div>
@@ -120,15 +124,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">ID</label>
                                     <input type="search" class="form-control" name=idCasa id="idCasa" aria-describedby="emailHelp" required="true"/>
-                                    <input type="submit" value="Buscar" class="form-control border-bottom"/>
+                                    <input type="submit" value="Buscar" class="btn btn-success btn-block mb-2"/>
                                 </div>
                             </form>
                         </div>
-                        
-                            <form th:action="@{/casas/modificar/casa}" th:object="${casa}"
+                        <div th:if="${casa != null}">
+                            <form th:action="@{/casas/modificar/}+${casa.idCasa}" th:object="${casa}"
                                   method="POST" class="was-validated" enctype="multipart/form-data">
-                                <input type="hidden" name="idCasa" th:field="*{idCasa}"/>
-                                <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                                <input type="hidden" name="idCasa" id="idCasa" th:field="*{idCasa}"/>
+                                <input type="hidden" name="rutaImagen" id="rutaImagen" th:field="*{rutaImagen}"/>
 
                                 <p>Ingresa los datos para actualizar la casa</p>
                                 <div class="form-outline mb-4">
@@ -149,12 +153,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <input class="form-check-input" type="checkbox" name="activo" id="activo" th:field="*{activo}" required="true"/>
                                 </div>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="btn btn-success btn-block mb-2" type="submit"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Finalizar</a></button>
-                                    <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
+                                    <button class="btn btn-success btn-block mb-2" type="submit"><a class="text-white text-decoration-none">Finalizar</a></button>
                                 </div>
                             </form>
-                        
+
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-secondary btn-block" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </section>

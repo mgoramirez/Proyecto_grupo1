@@ -80,7 +80,7 @@ public class CasaController {
         return "/casas/actualizar";
     }
     
-    @PostMapping("/modificar/casa")
+    @PostMapping("/modificar/{idCasa}")
     public String Modificar(Casas casa,
         @RequestParam("imagenFile") MultipartFile imagenFile) {        
         if (!imagenFile.isEmpty()) {
@@ -96,7 +96,13 @@ public class CasaController {
     }
     
   
+    /*  *****      Eliminar   *** */
     
+    @GetMapping("/eliminar/{idCasa}")
+    public String casaEliminar(Casas casa) {
+        casasService.delete(casa);
+        return "redirect:/administrador/registroAdmin";
+    }
 
 
 }

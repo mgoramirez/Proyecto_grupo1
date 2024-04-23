@@ -1,89 +1,230 @@
 <!DOCTYPE html>
-
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>CondoApp</title>
+        <title>TechShop</title>
     </head>
     <body>
 
-        <!--Formulario para registro de usuario-->    
-        <section th:fragment="Registro">
-            <div class="container h-100">
-                <div class="row h-100 justify-content-center align-items-center">
-                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
-                        <div class="text-center">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
-                        </div>
-                        <form>
-                            <p>Ingresa los datos para registrarte</p>
-
-                            <div class="form-outline mb-4">
-                                <label for="Nombre">Nombre:</label>
-                                <input type="text" id="Nombre" class="form-control border-bottom" placeholder="Nombre" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label for="Apellidos">Apellidos:</label>
-                                <input type="text" id="Apellidos" class="form-control border-bottom" placeholder="Apellidos" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label for="Correo">Correo electrónico: </label>
-                                <input type="email" id="Correo" class="form-control border-bottom" placeholder="Correo electrónico" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label for="password">Contraseña: </label>
-                                <input type="password" id="password" class="form-control" placeholder="Contraseña" />
-                            </div>
-
-                            <div class="text-center pt-1 mb-3 pb-1">
-                                <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/inicio/paginaInicio}">Registrar</a></button>
-                            </div>
-                        </form>
-
+        <!-- Sección para crear el botón de agregar, llama a una ventana modal -->
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <div class="row">
+                    <div class="col-md-3">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarUsuario">
+                            <i class="fas fa-plus"></i> [[#{usuario.agregar}]]
+                        </button>
                     </div>
                 </div>
-            </div>    
-        </section>
-
-        <!--Formulario para cambiar contraseña-->
-
-        <section th:fragment="Resetpwd" >
-            <div class="container text-center pt-1 mb-1 pb-1">
-                <a href="#" class="text-decoration-none" data-bs-target="#pwd" data-bs-toggle="modal">Forgot password?</a>
             </div>
         </section>
-        <section th:fragment="pwd">
-            <div id="pwd" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
+        <!-- Fragmento para agregar usuario, es la ventana modal -->
+        <section th:fragment="agregarUsuario">
+            <div id="agregarUsuario" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                        <div class="modal-header bg-light">
-                            <h5 class="modal-title">Cambiar contraseña</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form>
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">[[#{usuario.agregar}]]</h5>
+                            <button type="button" 
+                                    class="btn-close" 
+                                    data-bs-dismiss="modal" 
+                                    aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/usuario/guardar}" th:object="${usuario}"
+                              method="POST" class="was-validated"
+                              enctype="multipart/form-data">
                             <div class="modal-body">
-
-                                <div class="form-outline mb-3">
-                                    <label for="Correo" class="col-form-label">Correo electrónico: </label>
-                                    <input type="email" class="form-control" id="Correo"/>
+                                <div class="mb-3">
+                                    <label for="nombre">[[#{usuario.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
                                 </div>
-                                <div class="form-outline mb-3">
-                                    <label for="password" class="col-form-label">Nueva contraseña: </label>
-                                    <input type="password" id="password" class="form-control" />
+                                <div class="mb-3">
+                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                    <input type="text" class="form-control" name="apellidos" required="true"/>
                                 </div>
-
+                                <div class="mb-3">
+                                    <label for="username">[[#{usuario.username}]]</label>
+                                    <input type="text" class="form-control" name="username" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password">[[#{usuario.password}]]</label>
+                                    <input type="password" class="form-control" name="password" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email">[[#{usuario.correo}]]</label>
+                                    <input type="email" class="form-control" name="correo" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono">[[#{usuario.telefono}]]</label>
+                                    <input type="tel" class="form-control" name="telefono"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen">[[#{usuario.imagen}]]</label>
+                                    <input class="form-control" type="file" name="imagenFile"
+                                           onchange="readURL(this);"/>
+                                    <img id="blah" src="#" alt="your image" height="200"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </section>
+
+        <!-- Sección principal para mostrar la información de la entidad usuario -->
+        <section th:fragment="listadoUsuarios" id="usuarios">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{usuario.listado}]]</h4>
+                            </div>
+                            <div th:if="${usuarios != null and !usuarios.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>[[#{usuario.username}]]</th>
+                                            <th>[[#{usuario.nombre}]]</th>
+                                            <th>[[#{usuario.apellidos}]]</th>
+                                            <th>[[#{usuario.imagen}]]</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="usuario, contador : ${usuarios}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${usuario.username}]]</td>
+                                            <td>[[${usuario.nombre}]]</td>
+                                            <td>[[${usuario.apellidos}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                                <a th:href="@{/usuario/modificar/}+${usuario.idUsuario}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${usuarios == null or usuarios.empty}">
+                                <span>[[#{lista.vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{usuario.total}]]</h3>
+                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalUsuarios}]]</h4>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fragmento para editar usuario -->
+        <section th:fragment="editarUsuario">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/usuario/guardar}" th:object="${usuario}"
+                          class="was-validated"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                        <section th:replace="~{usuario/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombre">[[#{usuario.nombre}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="nombre" th:field="*{nombre}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="apellidos" th:field="*{apellidos}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email">[[#{usuario.correo}]]</label>
+                                                    <input type="email" class="form-control" 
+                                                           name="correo" th:field="*{correo}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="telefono">[[#{usuario.telefono}]]</label>
+                                                    <input type="tel" class="form-control" 
+                                                           name="telefono" th:field="*{telefono}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="imagen">[[#{usuario.imagen}]]</label>
+                                                    <input class="form-control" type="file" name="imagenFile"
+                                                           onchange="readURL(this);" />
+                                                    <img id="blah" th:src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fragmento para los botones de edición -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/usuario/listado}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">                                
+                        <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </body>
 </html>
+

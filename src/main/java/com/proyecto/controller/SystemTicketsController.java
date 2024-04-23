@@ -1,4 +1,3 @@
-
 package com.proyecto.controller;
 
 import org.springframework.stereotype.Controller;
