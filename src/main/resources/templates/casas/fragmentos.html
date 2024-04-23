@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" >
@@ -11,19 +6,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
 
-        <-<!-- Formulario para agregar casa -->
-        <section th:fragment="Agregar" >
+<-<!-- Formulario para agregar casa -->
+        <section th:fragment="Agregar" style="height: 100%; background-color: #333333;">
 
             <div class="container h-100">
+                <br>
                 <div class="row h-100 justify-content-center align-items-center">
                     <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
                         <div class="text-center">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
-                                <h5 style="background-color: lightblue">Agregar</h5>
+                            <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
+
+                                <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
+                                <br>
+                                <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Agregar</h5>
                         </div>
-                        <form th:action="@{/casas/crudCasas/agregar}" th:object="${casa}"
+                        <form style="color: white; margin-bottom: 300px;" th:action="@{/casas/crudCasas/agregar}" th:object="${casa}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <p>Ingresa los datos para registrar la casa</p>
 
@@ -43,7 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <div class="mb-3">
                                 <label for="activo">Casa disponible</label>
                                 <input class="form-check-input" type="checkbox" name="activo" id="activo" required="true"/>
-                            </div>
+                                </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn btn-success btn-block mb-2" type="submit"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Finalizar</a></button>
                                 <button class="btn btn-secondary btn-block mb-2" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
@@ -57,17 +55,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
 
         <!-- Fragmento para el apartado de consultar y eliminar -->
-        <section th:fragment="Consultar">
+        <section th:fragment="Consultar" style="height: 100%; background-color: #333333;">
             <div class="container h-100">
+                <br>
                 <div class="row h-100 justify-content-center align-items-center">
-                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
+                    <div class="col-10 col-md-8 col-lg-6 mx-5 px-5" style="margin-bottom: 500px">
                         <div class="text-center">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
-                                <h5 style="background-color: lightblue">Consulta/Eliminar</h5>
+                            <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
+
+                                <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
+                                <br>
+                                <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Consultar/Eliminar</h5>
                         </div>
-                        <form th:action="@{/casas/consulta/casa}" th:object="${casa}"
+                        <form style="color: white; margin-bottom: 300px;" th:action="@{/casas/consulta/casa}" th:object="${casa}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <!--<form >-->
                             <p>Area de consultas/Actualización</p>
@@ -77,7 +78,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <input type="submit" class="btn btn-success btn-block mb-2" value="Consultar"/>
                             </div>
                         </form>  
-                        <table th:if="${casa != null}" class="table" id="details" >
+                        <table th:if="${casa != null}" class="table" id="details"  style="background-color: white">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -107,20 +108,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
 
         <!-- Fragmento para el apartado de Actualizar -->
-        <section th:fragment="Actualizar" >
+         <section th:fragment="Actualizar" style="height: 100%; background-color: #333333;">
 
             <div class="container h-100">
+                <br>
                 <div class="row h-100 justify-content-center align-items-center">
                     <div class="col-10 col-md-8 col-lg-6 mx-5 px-5">
                         <div class="text-center">
-                            <img src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
-                                 style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">CONDOAPP</h4>
-                                <h5 style="background-color: lightblue">Actualizar</h5>
+                            <img  src="https://previews.123rf.com/images/doublerdesign/doublerdesign1906/doublerdesign190601147/125124060-plantilla-de-vector-de-dise%C3%B1o-de-icono-de-logotipo-de-apartamento.jpg"
+                                 style="width: 185px; border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 1); " alt="logo">
+
+                                <h4 class="mt-1 mb-5 pb-1" style=" color: #00cccc; font-size: 50px; background-color: rgba(0,0,0,0.5);">CONDOAPP</h4>
+                                <br>
+                                <h5 class=" mb-5 pb-1" style="color: white; font-size: 35px; margin-top: 100px">Modificar</h5>
                         </div>
-                        <div>
                             <form th:action="@{/casas/modificar}" th:object="${casa}"
-                                  method="POST" class="was-validated" enctype="multipart/form-data">
+                                  method="POST" class="was-validated" enctype="multipart/form-data" style="color: white; margin-bottom: 50px;">
+                                <p>Ingresa los datos para actualizar la casa</p>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">ID</label>
                                     <input type="search" class="form-control" name=idCasa id="idCasa" aria-describedby="emailHelp" required="true"/>
@@ -130,7 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         </div>
                         <div th:if="${casa != null}">
                             <form th:action="@{/casas/modificar/}+${casa.idCasa}" th:object="${casa}"
-                                  method="POST" class="was-validated" enctype="multipart/form-data">
+                                  method="POST" class="was-validated" enctype="multipart/form-data" style="color: white">
                                 <input type="hidden" name="idCasa" id="idCasa" th:field="*{idCasa}"/>
                                 <input type="hidden" name="rutaImagen" id="rutaImagen" th:field="*{rutaImagen}"/>
 
@@ -161,8 +165,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button class="btn btn-secondary btn-block" type="button"><a class="text-white text-decoration-none" th:href="@{/administrador/registroAdmin}">Cancelar</a></button>
                         </div>
-                    </div>
                     
+                    </div>
+                    <br>
+                    <br>
                 </div>
             </div>
         </section>
